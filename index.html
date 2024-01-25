@@ -1,0 +1,21 @@
+<!DOCTYPE html> 
+<html>
+<body>
+
+<input type="text" id="myInput">
+<button onclick="sendMessage()">Send Message</button> 
+
+<script>
+function sendMessage() {
+  window.flutter_inappwebview.callHandler('sendMsg', document.getElementById("myInput").value); 
+}
+
+window.addEventListener("message", (e) => {   
+  if(e.data == "ping") {
+    window.flutter_inappwebview.callHandler('recvMsg', "pong");
+  }
+});  
+</script>
+
+</body>
+</html>
