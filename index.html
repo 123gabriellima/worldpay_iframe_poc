@@ -1,22 +1,49 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
 <body>
+  <div id="main">
+    <div class="inputs">
+      <input type="text" id="myInput" class="input is-link">
+      <button onclick="sendMessage()" class="button is-link is-hover">Send Message</button>
+    </div>
+  </div>
 
-<input type="text" id="myInput">
-<button onclick="sendMessage()">Send Message</button> 
+  <style>
+    #main {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+    }
 
-<script>
-function sendMessage() {
-  window.flutter_inappwebview.callHandler('sendMsg', document.getElementById("myInput").value); 
-}
+    .inputs {
+      width: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+  </style>
 
-window.addEventListener("message", (e) => {   
-  if(e.data == "ping") {
-    alert(JSON.stringify(e))
-    window.flutter_inappwebview.callHandler('recvMsg', "pong");
-  }
-});  
-</script>
+  <script>
+    function sendMessage() {
+      window.flutter_inappwebview.callHandler('sendMsg', document.getElementById("myInput").value);
+    }
+
+    window.addEventListener("message", (e) => {
+      if (e.data == "ping") {
+        alert(JSON.stringify(e))
+        window.flutter_inappwebview.callHandler('recvMsg', "pong");
+      }
+    });  
+  </script>
 
 </body>
+
 </html>
