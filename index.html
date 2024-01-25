@@ -13,6 +13,9 @@
       <input type="text" id="myInput" class="input is-link">
       <button onclick="sendMessage()" class="button is-link is-hover" style="margin-top: 10px;">Send Message</button>
     </div>
+    <div style="width:100%;display: grid;" id="appendContent">
+      <div style="height: 400px; width: 500px;background-color: red;"></div>
+    </div>
   </div>
 
   <style>
@@ -27,16 +30,31 @@
       max-width: 500px;
       display: grid;
     }
+
+    #appendContent {
+      width: 100%;
+      display: grid;
+      height: 300px;
+      overflow-y: scroll;
+    }
   </style>
 
   <script>
+    function createDivWithContent(message) {
+        const newDiv = document.createElement('div')
+        newDiv.innerText = message;
+
+        document.getElementById('appendContent').appendChild(newDiv)
+    }
+
     function sendMessage() {
       window.flutter_inappwebview.callHandler('sendMsg', document.getElementById("myInput").value);
     }
 
     window.addEventListener("message", (e) => {
+      createDivWithContent(JSON.stringify(e.data))
+
       if (e.data == "ping") {
-        alert(JSON.stringify(e))
         window.flutter_inappwebview.callHandler('recvMsg', "pong");
       }
     });  
