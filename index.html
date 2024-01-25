@@ -11,7 +11,7 @@
   <div id="main">
     <div class="inputs">
       <input type="text" id="myInput" class="input is-link">
-      <button onclick="sendMessage()" class="button is-link is-hover">Send Message</button>
+      <button onclick="sendMessage()" class="button is-link is-hover" style="margin-top: 10px;">Send Message</button>
     </div>
   </div>
 
@@ -24,10 +24,8 @@
     }
 
     .inputs {
-      width: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
+      max-width: 500px;
+      display: grid;
     }
   </style>
 
