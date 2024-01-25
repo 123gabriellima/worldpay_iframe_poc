@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
+<body>
+  <div id="main">
+    <div class="inputs">
+      <input type="text" id="myInput" class="input is-link">
+      <button onclick="sendMessageToApp()" class="button is-link is-hover" style="margin-top: 10px;">Send Message</button>
+    </div>
+    <div style="width:100%;display: grid;" id="appendContent"></div>
+  </div>
+
+  <style>
+    #main {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    .inputs {
+      max-width: 500px;
+      display: grid;
+    }
+
+    #appendContent {
+      width: 100%;
+      display: grid;
+      height: 300px;
+      overflow-y: scroll;
+    }
+  </style>
+
+  <script>
+    function createDivWithContent(message) {
+        const newDiv = document.createElement('div')
+        newDiv.innerText = message;
+
+        document.getElementById('appendContent').appendChild(newDiv)
+    }
+
+    function sendMessageToApp() {
+      window.flutter_inappwebview.callHandler('sendMsg', document.getElementById("myInput").value);
+    }
+
+    window.addEventListener("message", (e) => {
+      if(typeof e.data === "string") {
+        createDivWithContent(e.data)
+      }
+
+      if (e.data == "ping") {
+        window.flutter_inappwebview.callHandler('recvMsg', "pong");
+      }
+    });  
+  </script>
+
+</body>
+
+</html>
