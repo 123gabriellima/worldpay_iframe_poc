@@ -2,41 +2,105 @@
 <html>
 
 <head>
-    <title> My test page </title>
-    <script src='https://payments.worldpay.com/resources/hpp/integrations/embedded/js/hpp-embedded-integration-library.js'></script>
+    <title> Worldpay iframe </title>
+    <script
+        src='https://payments.worldpay.com/resources/hpp/integrations/embedded/js/hpp-embedded-integration-library.js'></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
 <body>
-    <div>This is my test page as a merchant</div>
-    <div id='custom-html'></div>
-    <script type="text/javascript">
-        //your options
-        var customOptions = {
-            url: 'https://payments-test.worldpay.com/app/hpp/integration/wpg/corporate?OrderKey=WPLATAM014%5ETEST-HPP-005&Ticket=001706475018958024V8cNs05ac4Ky8mCoqCaEgk9gNtHEUcLtf88Jp&source=https%3A%2F%2Fsecure-test.worldpay.com',
+    <div class="root">
+        <div class="content">
+            <div class="inputs">
+                <input type="text" id="iframeUrlInput" class="input is-link">
+                <button onclick="loadIframe()" class="button is-link is-hover load-iframe-button">Load Iframe</button>
+            </div>
+
+            <div id='custom-html'></div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    window.onload = () => {
+        getIframeInput().value = localStorage.getItem('wp-url') ?? ''
+    }
+    var libraryObject = new WPCL.Library();
+
+    function getIframeInput() {
+        return document.getElementById('iframeUrlInput')
+    }
+
+    function loadIframe() {
+        if (!getIframeInput().value.includes('https://payments-test.worldpay.com')) {
+            alert('por favor coloque a url correta')
+            return;
+        }
+
+        localStorage.setItem('wp-url', getIframeInput().value)
+        const customOptions = buildCustomOptions(getIframeInput().value)
+
+        // console.log({ customOptions })
+        // libraryObject.populateForm({
+        //     cardNumber: "4444333322221111",
+        //     cardHolderName: "AUTHORISED",
+        //     cardExpiryMonth: 12,
+        //     cardExpiryYear: 49,
+        //     cardSecurityCode: "123"
+        // });
+        libraryObject.setup(customOptions);
+        // libraryObject.destroy();
+        
+
+        // tambem tem o submitForm
+        // testar o submit form para executar o ato de submit via botão do app 123milhas
+    }
+
+    function buildCustomOptions(url) {
+        return {
+            url,
             type: 'iframe',
-            inject: 'onload',
+            inject: 'immediate',
             target: 'custom-html',
             accessibility: true,
-            debug: false,
-            language: 'en',
-            country: 'gb',
+            debug: true,
+            language: 'pt_BR',
+            country: 'BR',
             preferredPaymentMethod: 'VISA-SSL',
             successURL: 'https://example.com/success',
             cancelURL: 'https://example.com/cancel',
             failureURL: 'https://example.com/failure',
             pendingURL: 'https://example.com/pending',
-            errorURL: 'https://example.com/error'
-        };
-        //initialise the library and pass options
-        var libraryObject = new WPCL.Library();
-        libraryObject.setup(customOptions);
-    </script>
-</body>
+            errorURL: 'https://example.com/error',
+            flowCallback: handleResponse
+        }
+    }
 
-</html>
+    function handleResponse(response) {
+        console.log({response})
+    }
+</script>
 
 <style>
-    #cardholderName{
-        color: 
+    .root {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+    }
+
+    .content {
+        max-width: 500px;
+        min-width: 300px;
+        display: grid;
+        margin-top: 100px;
+    }
+
+    .load-iframe-button {
+        margin-top: 10px;
+        width: 100%;
     }
 </style>

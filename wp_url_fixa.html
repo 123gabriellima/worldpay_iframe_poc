@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> My test page </title>
+    <script
+        src='https://payments.worldpay.com/resources/hpp/integrations/embedded/js/hpp-embedded-integration-library.js'></script>
+</head>
+
+<body>
+    <div>This is my test page as a merchant</div>
+    <div id='custom-html'></div>
+    <script type="text/javascript">
+        //your options
+        var customOptions = {
+            url: 'https://payments-test.worldpay.com/app/hpp/integration/wpg/corporate?OrderKey=WPLATAM014%5ETEST-WOP-002&Ticket=001706645055947023-AcDqAuNY-QF5qL2dWl-wh3gOc0k-u6eoKi4h&source=https%3A%2F%2Fsecure-test.worldpay.com',
+            type: 'iframe',
+            inject: 'onload',
+            target: 'custom-html',
+            accessibility: true,
+            debug: false,
+            language: 'en',
+            country: 'gb',
+            preferredPaymentMethod: 'VISA-SSL',
+            successURL: 'https://example.com/success',
+            cancelURL: 'https://example.com/cancel',
+            failureURL: 'https://example.com/failure',
+            pendingURL: 'https://example.com/pending',
+            errorURL: 'https://example.com/error'
+        };
+        //initialise the library and pass options
+        var libraryObject = new WPCL.Library();
+        libraryObject.populate({
+            cardNumber: "4444333322221111",
+            cardHolderName: "AUTHORISED",
+            cardExpiryMonth: 12,
+            cardExpiryYear: 49,
+            cardSecurityCode: "123"
+        });
+        libraryObject.setup(customOptions);
+        // libraryObject.populate({
+        //     cardNumber: "4444333322221111",
+        //     cardHolderName: "AUTHORISED",
+        //     cardExpiryMonth: 12,
+        //     cardExpiryYear: 49,
+        //     cardSecurityCode: "123"
+        // });
+    </script>
+</body>
+
+</html>
+
+<style>
+
+</style>

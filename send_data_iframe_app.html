@@ -11,7 +11,8 @@
   <div id="main">
     <div class="inputs">
       <input type="text" id="myInput" class="input is-link">
-      <button onclick="sendMessageToApp()" class="button is-link is-hover" style="margin-top: 10px;">Send Message</button>
+      <button onclick="sendMessageToApp()" class="button is-link is-hover" style="margin-top: 10px;">Send
+        Message</button>
     </div>
     <div style="width:100%;display: grid;" id="appendContent"></div>
   </div>
@@ -39,19 +40,19 @@
 
   <script>
     function createDivWithContent(message) {
-        const newDiv = document.createElement('div')
-        newDiv.innerText = message;
+      const newDiv = document.createElement('div')
+      newDiv.innerText = message;
 
-        document.getElementById('appendContent').appendChild(newDiv)
+      document.getElementById('appendContent').appendChild(newDiv)
     }
 
     function sendMessageToApp() {
       window.flutter_inappwebview.callHandler('sendMsg', document.getElementById("myInput").value);
-      window.dispatchEvent('message', 'teste')
+      window.dispatchEvent('test_msg', 'teste')
     }
 
     window.addEventListener("message", (e) => {
-      if(typeof e.data === "string") {
+      if (typeof e.data === "string") {
         createDivWithContent(e.data)
       }
 
