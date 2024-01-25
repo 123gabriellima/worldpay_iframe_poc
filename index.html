@@ -11,7 +11,7 @@
   <div id="main">
     <div class="inputs">
       <input type="text" id="myInput" class="input is-link">
-      <button onclick="sendMessage()" class="button is-link is-hover" style="margin-top: 10px;">Send Message</button>
+      <button onclick="sendToAppMessage()" class="button is-link is-hover" style="margin-top: 10px;">Send Message</button>
     </div>
     <div style="width:100%;display: grid;" id="appendContent"></div>
   </div>
@@ -45,7 +45,7 @@
         document.getElementById('appendContent').appendChild(newDiv)
     }
 
-    function sendMessage() {
+    function sendToAppMessage() {
       window.flutter_inappwebview.callHandler('sendMsg', document.getElementById("myInput").value);
     }
 
