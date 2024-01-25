@@ -50,7 +50,9 @@
     }
 
     window.addEventListener("message", (e) => {
-      createDivWithContent(JSON.stringify(e.data))
+      if(typeof e.data === "string") {
+        createDivWithContent(e.data)
+      }
 
       if (e.data == "ping") {
         window.flutter_inappwebview.callHandler('recvMsg', "pong");
