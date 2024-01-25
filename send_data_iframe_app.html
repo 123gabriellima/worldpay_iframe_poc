@@ -47,6 +47,7 @@
 
     function sendMessageToApp() {
       window.flutter_inappwebview.callHandler('sendMsg', document.getElementById("myInput").value);
+      window.dispatchEvent('message', 'teste')
     }
 
     window.addEventListener("message", (e) => {
