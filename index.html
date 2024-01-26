@@ -15,6 +15,7 @@
             <div class="inputs">
                 <input type="text" id="iframeUrlInput" class="input is-link">
                 <button onclick="loadIframe()" class="button is-link is-hover load-iframe-button">Load Iframe</button>
+                <button onclick="submitForm()" class="button is-success is-hover load-iframe-button">Submit form</button>
             </div>
 
             <div id='custom-html'></div>
@@ -59,6 +60,10 @@
         // testar o submit form para executar o ato de submit via botão do app 123milhas
     }
 
+    function submitForm() {
+        libraryObject.submitForm();
+    }
+
     function buildCustomOptions(url) {
         return {
             url,
@@ -75,12 +80,15 @@
             // failureURL: 'https://example.com/failure',
             // pendingURL: 'https://example.com/pending',
             // errorURL: 'https://example.com/error',
-            flowCallback: handleResponse
+            resultCallback: handleResponse
         }
     }
 
-    function handleResponse(response) {
-        console.log({response})
+    function handleResponse(wpResponse) {
+        if( wpResponse.order?.status === 'success') {
+            sendEvent('success-response', 'test-success')
+        }
+        console.log({wpResponse})
     }
 </script>
 

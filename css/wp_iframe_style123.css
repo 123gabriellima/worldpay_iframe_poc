@@ -1,0 +1,42 @@
+body {
+    font-family: "Montserrat", sans-serif !important;
+}
+
+.textbox, #instalments {
+    border-width: 2px !important;
+    box-shadow: none !important;
+    border: 2px solid #E6E6E6 !important;
+    border-radius: 5px !important;
+    color: #414042 !important;
+    background: transparent !important;
+}
+
+.textbox:focus {
+    border-color: #414042 !important;
+}
+
+.button {
+    background: linear-gradient(308.6deg, #F06531 -7.94%, #EA3D35 79.38%);
+    border-radius: 5px !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+.error .textbox {
+    border: 0.2rem solid #EA3D35 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+
+.box {
+    background: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 20px rgb(166, 171, 189), -10px -10px 20px #FAFBFF;
+}
+
+#main {
+    background: #F8F6F7;
+    border: none;
+    border-radius: .4em !important;
+}

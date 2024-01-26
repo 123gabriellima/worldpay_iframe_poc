@@ -1,0 +1,101 @@
+/* ------------------------------------------------------------
+ WOLRDPAY   
+------------------------------------------------------------ */
+/* ------------------------------------------------------------
+    BASE COLORS
+------------------------------------------------------------ */
+body,
+html {
+  font-family: 'Montserrat', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: #fff;
+  color: #231f20;
+}
+
+/* Main */
+#main {
+  background-color: #eeeeee;
+  border: 0;
+  border-radius: 5px;
+}
+#main .section-header:not(.expired) .icon {
+  color: #8e97de;
+}
+#main .order-summary .section-header {
+  color: #6068B2 !important;
+  font-weight: normal;
+  font-family: 'montserrat-bold', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Payment */
+.cardMakePaymentButton #submitButton {
+  background: #FF574B;
+  border: 0;
+  border-radius: 6px;
+  color: #fff;
+  font-family: 'montserrat-medium', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: normal;
+}
+
+.cardMakePaymentButton #submitButton:hover {
+  background: #d63b30;
+}
+
+#cancelButton {
+  border: 0;
+  border-radius: 10px;
+  font-family: 'montserrat-medium', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: normal;
+  color: #231f20;
+}
+
+#extend-session-button {
+  background: #6068B2;
+  border: 0;
+  border-radius: 10px;
+}
+#extend-session-button:hover {
+  background: #292f64;
+}
+
+#paymentDetailsHeader {
+  color: #6068B2 !important;
+  font-weight: normal;
+  font-family: 'montserrat-bold', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.payment-details span.box-title {
+  color: #FF574B !important;
+}
+
+.payment-details .field-label {
+  color: #FF574B !important;
+  font-weight: 600 !important;
+  font-family: 'montserrat-medium', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.security-code-text {
+    color: #231f20;
+}
+
+/* Summary */
+.summary table tr,
+#main .order-summary table tr {
+  border-bottom: 1px dotted #eeeeee;
+}
+
+.summary span.field-label {
+    color: #FF574B !important;
+    font-weight: 600 !important;
+    font-family: 'montserrat-medium', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.summary li.summaryRef {
+  font-family: 'montserrat-regular', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* message */
+.warning-message,
+.box {
+  border-radius: 0px;
+}
